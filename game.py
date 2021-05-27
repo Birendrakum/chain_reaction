@@ -138,14 +138,14 @@ def startgame():
                 records[(i[0], pos4)][0] = parent
                 temp[(i[0], pos4)] = 0
 
-            img = pygame.image.load("Untitled.png")
+            img = pygame.image.load("images/Untitled.png")
             img = pygame.transform.scale(img, (80, 80))
             screen.blit(img, (i[0] - 80, i[1] - 80))
             records[i][1] = 0
             for t in temp:
                 if ifexplode(t):
                     newarr[t] = 0
-                    img = pygame.image.load("DBZ Energy-Ki Ball Charge Green Screen Effect_HD 47.png")
+                    img = pygame.image.load("images/DBZ Energy-Ki Ball Charge Green Screen Effect_HD 47.png")
                     img = pygame.transform.scale(img, (80, 80))
                     screen.blit(img, (t[0] - 80, t[1] - 80))
                 else:
@@ -346,6 +346,7 @@ def startgame():
             key = False
     pygame.quit()
 
+
 #this function creates main menu
 def mainmenu():
     main = True
@@ -360,9 +361,16 @@ def mainmenu():
                 if 65 <= pos[0] <= 166 and 123 <= pos[1] <= 150:
                     startgame()
                     main = False
-                if 65 <= pos[0] <= 166 and 150 <= pos[1] <= 177:
-                    pass
-                if 65 <= pos[0] <= 166 and 177 <= pos[1] <= 204:
+                if 65 <= pos[0] <= 166 and 151 <= pos[1] <= 177:
+                    img = pygame.transform.scale(pygame.image.load(r"images\rules.jpeg"), (900, 630))
+                    key = True
+                    while key:
+                        screen.blit(img, (0, 0))
+                        pygame.display.update()
+                        for events in pygame.event.get():
+                           if events.type == pygame.QUIT:
+                              key = False
+                if 65 <= pos[0] <= 166 and 178 <= pos[1] <= 204:
                     main = False
             if event.type == pygame.QUIT:
                 main = False
