@@ -1,11 +1,14 @@
+# import modules
 import pygame
 import os
 import math
 
+# initialise pygame
 pygame.init()
 screen = pygame.display.set_mode((900, 630))
 
 # Loading all images into dictionary
+
 dict1 = {}
 st = 0
 for img in os.listdir("videos/red1resized/"):
@@ -69,9 +72,9 @@ def pause():
                 if 322 <= pos[0] <= 619 and 237 <= pos[1] <= 328:
                     mainmenu()
                 if 322 <= pos[0] <= 619 and 328 <= pos[1] <= 419:
-                    pygame.quit()
+                    exit()
             if event.type == pygame.QUIT:
-                pygame.quit()
+                exit()
 
 
 # This function called when game starts
@@ -145,7 +148,7 @@ def startgame():
             for t in temp:
                 if ifexplode(t):
                     newarr[t] = 0
-                    img = pygame.image.load("images/DBZ Energy-Ki Ball Charge Green Screen Effect_HD 47.png")
+                    img = pygame.image.load("images/energy.png")
                     img = pygame.transform.scale(img, (80, 80))
                     screen.blit(img, (t[0] - 80, t[1] - 80))
                 else:
@@ -202,14 +205,14 @@ def startgame():
             displaycustom()
             pygame.display.update()
 
-    #check if current cell blit blue or not
+    # check if current cell blit blue or not
     def blueupdate(state, x, y, initial1, initial2, initial3):
         posx = x - 70
         posy = y - 70
         explode = False
         if state == 1:
             # print(("b--1"))
-            screen.blit(dict4[initial1], (posx, posy ))
+            screen.blit(dict4[initial1], (posx, posy))
         elif state == 2 or ((x, y) in corner and state >= 2):
             # print("b--2")
             if (x, y) in corner:
@@ -347,7 +350,7 @@ def startgame():
     pygame.quit()
 
 
-#this function creates main menu
+# this function creates main menu
 def mainmenu():
     main = True
     while main:
@@ -361,17 +364,19 @@ def mainmenu():
                 if 65 <= pos[0] <= 166 and 123 <= pos[1] <= 150:
                     startgame()
                     main = False
-                if 65 <= pos[0] <= 166 and 151 <= pos[1] <= 177:
+                if 65 <= pos[0] <= 166 and 151 <= pos[1] <= 178:
                     img = pygame.transform.scale(pygame.image.load(r"images\rules.jpeg"), (900, 630))
                     key = True
                     while key:
                         screen.blit(img, (0, 0))
                         pygame.display.update()
                         for events in pygame.event.get():
-                           if events.type == pygame.QUIT:
-                              key = False
-                if 65 <= pos[0] <= 166 and 178 <= pos[1] <= 204:
-                    main = False
+                            if events.type == pygame.QUIT:
+                                key = False
+                if 65 <= pos[0] <= 166 and 179 <= pos[1] <= 214:
+                    exit()
             if event.type == pygame.QUIT:
-                main = False
+                exit()
+
+
 mainmenu()
